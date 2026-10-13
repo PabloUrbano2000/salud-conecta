@@ -4,9 +4,14 @@ import ConfirmationPage from './pages/ConfirmationPage'
 import DoctorHomePage from './pages/DoctorHomePage'
 import DoctorProfilePage from './pages/DoctorProfilePage'
 import DoctorSettingsPage from './pages/DoctorSettingsPage'
+import DoctorRegistrationPage from './pages/DoctorRegistrationPage'
+import DoctorRegistrationPendingPage from './pages/DoctorRegistrationPendingPage'
+import DoctorValidationPage from './pages/DoctorValidationPage'
+import AdminPage from './pages/AdminPage'
 import HomePage from './pages/HomePage'
 import LoginPage from './pages/LoginPage'
 import PatientHomePage from './pages/PatientHomePage'
+import PatientRegistrationPage from './pages/PatientRegistrationPage'
 import SchedulePage from './pages/SchedulePage'
 
 function App() {
@@ -14,6 +19,11 @@ function App() {
     <Routes>
       <Route index element={<HomePage />} />
       <Route path="/login" element={<LoginPage />} />
+      <Route path="/registro-paciente" element={<PatientRegistrationPage />} />
+      <Route path="/registro-doctor" element={<DoctorRegistrationPage />} />
+      <Route path="/registro-doctor/pendiente" element={<DoctorRegistrationPendingPage />} />
+      <Route path="/administracion/validaciones" element={<DoctorValidationPage />} />
+      <Route path="/admin" element={<AdminPage />} />
       <Route path="/paciente" element={<PatientHomePage />} />
       <Route path="/doctores/:id" element={<DoctorProfilePage />} />
       <Route path="/reserva/:id" element={<BookingPage />} />

@@ -1,0 +1,7 @@
+import { Link } from "react-router";
+
+function DoctorRegistrationPendingPage() {
+  return <main className="grid min-h-svh place-items-center bg-slate-50 px-5 py-10"><section className="w-full max-w-lg rounded-3xl bg-white p-8 text-center shadow-sm ring-1 ring-slate-200 sm:p-12"><div className="mx-auto grid size-16 place-items-center rounded-2xl bg-amber-50 text-3xl text-amber-600">◷</div><span className="mt-7 inline-flex rounded-full bg-amber-50 px-3 py-1 text-sm font-semibold text-amber-700">Solicitud pendiente</span><h1 className="mt-4 text-3xl font-semibold tracking-tight text-slate-900">Estamos verificando tu perfil</h1><p className="mt-4 leading-7 text-slate-600">Recibimos tu solicitud profesional. Un administrador verificará tu colegiatura y los datos de tu consultorio.</p><div className="mt-7 rounded-2xl bg-slate-50 p-4 text-left text-sm leading-6 text-slate-600"><span className="font-semibold text-slate-800">Mientras tanto:</span><br />Tu perfil no aparecerá en los resultados de búsqueda de los pacientes hasta que sea validado.</div><Link className="mt-8 inline-flex w-full justify-center rounded-xl bg-cyan-600 px-5 py-3.5 font-semibold text-white transition hover:bg-cyan-700" to="/">Volver al inicio</Link><Link className="mt-4 inline-flex text-sm font-semibold text-cyan-700 hover:text-cyan-800" to="/login">Ir al inicio de sesión</Link></section></main>;
+}
+
+export default DoctorRegistrationPendingPage;

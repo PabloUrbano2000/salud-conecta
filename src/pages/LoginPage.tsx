@@ -138,6 +138,28 @@ function LoginPage() {
             >
               Ingresar como {role === "patient" ? "paciente" : "doctor"}
             </button>
+
+            {role === "patient" ? (
+              <p className="mt-6 text-center text-sm text-slate-600">
+                ¿Aún no tienes una cuenta?{" "}
+                <a
+                  className="font-semibold text-cyan-700 hover:text-cyan-800"
+                  href="/registro-paciente"
+                >
+                  Regístrate como paciente
+                </a>
+              </p>
+            ) : (
+              <p className="mt-6 text-center text-sm text-slate-600">
+                ¿Eres profesional de la salud?{" "}
+                <a
+                  className="font-semibold text-cyan-700 hover:text-cyan-800"
+                  href="/registro-doctor"
+                >
+                  Regístrate como doctor
+                </a>
+              </p>
+            )}
           </form>
         </div>
 
