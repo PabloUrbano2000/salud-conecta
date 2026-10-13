@@ -1,4 +1,5 @@
 import { Link, useNavigate } from "react-router";
+import { specialties } from "../data/mockData";
 
 const fieldClassName =
   "mt-2 block w-full rounded-xl border border-slate-200 bg-white px-4 py-3 text-base text-slate-900 outline-none transition placeholder:text-slate-400 focus:border-cyan-600 focus:ring-4 focus:ring-cyan-100";
@@ -41,7 +42,7 @@ function DoctorRegistrationPage() {
             <label className="block text-sm font-medium text-slate-700">Correo profesional<input className={fieldClassName} placeholder="nombre@correo.com" type="email" /></label>
             <div className="grid gap-5 sm:grid-cols-2">
               <label className="block text-sm font-medium text-slate-700">CMP<input className={fieldClassName} placeholder="Ej. CMP 12345" type="text" /></label>
-              <label className="block text-sm font-medium text-slate-700">Especialidad<select className={fieldClassName} defaultValue=""><option disabled value="">Selecciona una opción</option><option>Medicina general</option><option>Cardiología</option><option>Pediatría</option><option>Dermatología</option><option>Psicología</option></select></label>
+              <label className="block text-sm font-medium text-slate-700">Especialidad<select className={fieldClassName} defaultValue=""><option disabled value="">Selecciona una opción</option>{specialties.filter((specialty) => specialty.active).map((specialty) => <option key={specialty.name}>{specialty.name}</option>)}</select></label>
             </div>
             <div className="rounded-2xl border border-slate-200 bg-slate-50 p-5">
               <h2 className="font-semibold text-slate-900">Datos del consultorio</h2>

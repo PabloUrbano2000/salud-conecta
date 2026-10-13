@@ -1,12 +1,5 @@
 import { Link } from "react-router";
-
-const specialties = [
-  { name: "Medicina general", description: "Atención médica primaria", active: true },
-  { name: "Cardiología", description: "Salud del corazón", active: true },
-  { name: "Pediatría", description: "Atención para niños", active: true },
-  { name: "Dermatología", description: "Salud de la piel", active: true },
-  { name: "Nutrición", description: "Alimentación y bienestar", active: false },
-];
+import { specialties } from "../data/mockData";
 
 function AdminPage() {
   return (

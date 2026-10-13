@@ -1,8 +1,9 @@
 import { Link } from "react-router";
 import AppShell from "../components/AppShell";
-import { specialties } from "../data/mockData";
+import { getAvailableSpecialties } from "../data/mockData";
 
 function HomePage() {
+  const specialties = getAvailableSpecialties();
   return (
     <AppShell role="patient">
       <section className="grid items-center gap-10 rounded-3xl bg-cyan-700 px-7 py-12 text-white lg:grid-cols-[1.15fr_0.85fr] lg:px-12 lg:py-16">
@@ -65,16 +66,16 @@ function HomePage() {
           Especialidades disponibles
         </h2>
         <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-          {specialties.slice(1).map((specialty, index) => (
+          {specialties.map((specialty, index) => (
             <Link
               className="rounded-2xl bg-white p-5 shadow-sm ring-1 ring-slate-200 transition hover:-translate-y-0.5 hover:ring-cyan-300"
-              key={specialty}
+              key={specialty.name}
               to="/paciente"
             >
               <span className="grid size-11 place-items-center rounded-xl bg-cyan-50 text-xl text-cyan-700">
                 {["⌁", "♥", "✦", "☀"][index]}
               </span>
-              <h3 className="mt-4 font-semibold text-slate-900">{specialty}</h3>
+              <h3 className="mt-4 font-semibold text-slate-900">{specialty.name}</h3>
               <p className="mt-1 text-sm text-slate-500">Ver especialistas</p>
             </Link>
           ))}
