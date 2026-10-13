@@ -93,6 +93,12 @@ function HomePage() {
         >
           Ingresar como doctor →
         </Link>
+        <Link
+          className="mt-4 block text-sm font-medium text-slate-500 hover:text-cyan-700"
+          to="/admin"
+        >
+          Acceso a administración
+        </Link>
       </section>
     </AppShell>
   );

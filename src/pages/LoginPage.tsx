@@ -1,5 +1,5 @@
 import { useState, type FormEvent } from "react";
-import { useNavigate, useSearchParams } from "react-router";
+import { Link, useNavigate, useSearchParams } from "react-router";
 import { setMockRole } from "../lib/mockSession";
 
 type UserRole = "patient" | "doctor";
@@ -124,12 +124,12 @@ function LoginPage() {
                 />
                 Recordarme
               </label>
-              <button
+              <Link
                 className="font-medium text-cyan-700 hover:text-cyan-800"
-                type="button"
+                to="/recuperar-contrasena"
               >
                 ¿Olvidaste tu contraseña?
-              </button>
+              </Link>
             </div>
 
             <button

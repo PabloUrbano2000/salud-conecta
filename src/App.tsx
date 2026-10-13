@@ -12,6 +12,9 @@ import HomePage from './pages/HomePage'
 import LoginPage from './pages/LoginPage'
 import PatientHomePage from './pages/PatientHomePage'
 import PatientRegistrationPage from './pages/PatientRegistrationPage'
+import PasswordRecoveryPage from './pages/PasswordRecoveryPage'
+import PasswordRecoverySentPage from './pages/PasswordRecoverySentPage'
+import VerificationPage from './pages/VerificationPage'
 import SchedulePage from './pages/SchedulePage'
 
 function App() {
@@ -20,6 +23,9 @@ function App() {
       <Route index element={<HomePage />} />
       <Route path="/login" element={<LoginPage />} />
       <Route path="/registro-paciente" element={<PatientRegistrationPage />} />
+      <Route path="/registro/verificar" element={<VerificationPage />} />
+      <Route path="/recuperar-contrasena" element={<PasswordRecoveryPage />} />
+      <Route path="/recuperar-contrasena/enviado" element={<PasswordRecoverySentPage />} />
       <Route path="/registro-doctor" element={<DoctorRegistrationPage />} />
       <Route path="/registro-doctor/pendiente" element={<DoctorRegistrationPendingPage />} />
       <Route path="/administracion/validaciones" element={<DoctorValidationPage />} />

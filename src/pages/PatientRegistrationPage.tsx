@@ -1,4 +1,5 @@
-import { Link } from "react-router";
+import { useState, type FormEvent } from "react";
+import { Link, useNavigate } from "react-router";
 
 function Logo() {
   return (
@@ -15,6 +16,21 @@ const fieldClassName =
   "mt-2 block w-full rounded-xl border border-slate-200 bg-white px-4 py-3 text-base text-slate-900 outline-none transition placeholder:text-slate-400 focus:border-cyan-600 focus:ring-4 focus:ring-cyan-100";
 
 function PatientRegistrationPage() {
+  const [registrationMethod, setRegistrationMethod] = useState<"email" | "phone">("email");
+  const [contact, setContact] = useState("");
+  const [duplicateContact, setDuplicateContact] = useState(false);
+  const navigate = useNavigate();
+
+  function handleContactChange(value: string) {
+    setContact(value);
+    setDuplicateContact(value.trim().toLowerCase() === "paciente@demo.com" || value.trim() === "999999999");
+  }
+
+  function handleSubmit(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+    if (!duplicateContact) navigate("/registro/verificar");
+  }
+
   return (
     <main className="min-h-svh bg-slate-50 px-5 py-6 sm:px-8 lg:grid lg:grid-cols-[minmax(0,1fr)_minmax(420px,0.85fr)] lg:p-0">
       <section className="mx-auto flex w-full max-w-xl flex-col lg:mx-0 lg:max-w-none lg:bg-white lg:px-[clamp(2.5rem,8vw,9rem)] lg:py-10">
@@ -40,7 +56,7 @@ function PatientRegistrationPage() {
             </p>
           </div>
 
-          <form className="mt-8 space-y-5" onSubmit={(event) => event.preventDefault()}>
+          <form className="mt-8 space-y-5" onSubmit={handleSubmit}>
             <div className="grid gap-5 sm:grid-cols-2">
               <label className="block text-sm font-medium text-slate-700">
                 Nombres
@@ -60,21 +76,19 @@ function PatientRegistrationPage() {
             <fieldset>
               <legend className="text-sm font-medium text-slate-700">¿Cómo prefieres registrarte?</legend>
               <div className="mt-2 grid grid-cols-2 gap-2 rounded-xl bg-slate-100 p-1.5">
-                <button className="rounded-lg bg-white px-3 py-2.5 text-sm font-semibold text-cyan-700 shadow-sm" type="button">
+                <button className={`rounded-lg px-3 py-2.5 text-sm font-semibold ${registrationMethod === "email" ? "bg-white text-cyan-700 shadow-sm" : "text-slate-500"}`} onClick={() => { setRegistrationMethod("email"); setContact(""); setDuplicateContact(false); }} type="button">
                   Correo electrónico
                 </button>
-                <button className="rounded-lg px-3 py-2.5 text-sm font-semibold text-slate-500" type="button">
+                <button className={`rounded-lg px-3 py-2.5 text-sm font-semibold ${registrationMethod === "phone" ? "bg-white text-cyan-700 shadow-sm" : "text-slate-500"}`} onClick={() => { setRegistrationMethod("phone"); setContact(""); setDuplicateContact(false); }} type="button">
                   Teléfono
                 </button>
               </div>
             </fieldset>
 
             <label className="block text-sm font-medium text-slate-700">
-              Correo electrónico
-              <input className={fieldClassName} placeholder="nombre@correo.com" type="email" />
-              <span className="mt-2 block text-xs font-normal leading-5 text-slate-500">
-                Te enviaremos un código para verificar tu cuenta.
-              </span>
+              {registrationMethod === "email" ? "Correo electrónico" : "Teléfono"}
+              <input aria-describedby={duplicateContact ? "duplicate-contact" : undefined} className={`${fieldClassName} ${duplicateContact ? "border-red-400 focus:border-red-500 focus:ring-red-100" : ""}`} inputMode={registrationMethod === "phone" ? "tel" : undefined} onChange={(event) => handleContactChange(event.target.value)} placeholder={registrationMethod === "email" ? "nombre@correo.com" : "999 999 999"} type={registrationMethod === "email" ? "email" : "tel"} value={contact} />
+              {duplicateContact ? <span className="mt-2 block text-sm font-normal leading-5 text-red-600" id="duplicate-contact">Este {registrationMethod === "email" ? "correo" : "teléfono"} ya está registrado. ¿Deseas <Link className="font-semibold underline" to="/login">iniciar sesión</Link>?</span> : <span className="mt-2 block text-xs font-normal leading-5 text-slate-500">Te enviaremos un código para verificar tu cuenta.</span>}
             </label>
 
             <label className="block text-sm font-medium text-slate-700">
