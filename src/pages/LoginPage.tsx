@@ -19,12 +19,12 @@ const roles: { id: UserRole; label: string; description: string }[] = [
 
 function Logo() {
   return (
-    <div className="flex items-center gap-3 text-slate-900">
+    <Link className="flex items-center gap-3 text-slate-900 no-underline" to="/">
       <div className="grid size-10 place-items-center rounded-xl bg-cyan-600 text-xl font-semibold text-white shadow-sm">
         +
       </div>
       <span className="text-xl font-semibold tracking-tight">SaludConecta</span>
-    </div>
+    </Link>
   );
 }
 
